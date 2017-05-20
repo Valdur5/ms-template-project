@@ -1,4 +1,6 @@
 TODO - Lib dependencies in the modules needed or in the toplevel pom?
+TODO - add dependecies between modules
+TODO - define maven goals to be used by CI tools
 
 # ms-template-project
 

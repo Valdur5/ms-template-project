@@ -1,4 +1,4 @@
-# data folder
+# Data Folder
 
 This folder contains data which is NOT relevant for the final project to run.
 
