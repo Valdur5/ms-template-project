@@ -16,7 +16,7 @@ The project structure is the following (find more information in the README file
 * ms-business - Business logic only
 * ms-persistence - Handling all the database stuff and place to define the models which have to be persisted.
 * ms-tests - Here are the system integration tests. All other tests should be in the corresponding module.
-* ms-ws - Module where the REST controller are located as well as the Data Transfer Objects which are sent to the client.
+* ms-ws - Module where the REST controller are located as well as the Data Transfer Objects which are sent to the client. Here is also the main entry point to start up the Spring Boot application.
 
 ## Technologies
 

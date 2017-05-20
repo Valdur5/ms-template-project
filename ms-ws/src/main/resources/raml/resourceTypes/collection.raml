@@ -1,0 +1,16 @@
+#%RAML 1.0 ResourceType
+usage: This resourceType should be used for any collection of items
+description: The collection of <<resourcePathName>>
+get:
+  description: Get all <<resourcePathName>>, optionally filtered
+  responses: 
+    200:
+      body: 
+        type: <<item>>[]
+post:
+  description: Create a new <<resourcePathName | !singularize>>
+  body: 
+    type: <<item>>
+  responses: 
+    201:
+      description: <<item>> created.

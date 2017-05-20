@@ -1,0 +1,17 @@
+#%RAML 1.0
+title: Mountains
+version: v1
+description: Basic web service for my Microservice template project.
+mediaType: [ application/json ]
+
+types: 
+  mountain: !include types/mountain.raml
+
+resourceTypes: 
+  collection: !include resourceTypes/collection.raml
+  object: !include resourceTypes/object.raml
+
+/mountains:
+  type: { collection: { item: mountain } }
+  /{id}:
+    type: { object: { item: mountain } }
