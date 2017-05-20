@@ -11,5 +11,12 @@
 
     <artifactId>ms-business</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>de.pandigo</groupId>
+            <artifactId>ms-persistence</artifactId>
+            <version>${global.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>

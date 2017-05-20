@@ -11,5 +11,21 @@
 
     <artifactId>ms-ws</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>de.pandigo</groupId>
+            <artifactId>ms-business</artifactId>
+            <version>${global.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

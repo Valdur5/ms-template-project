@@ -1,4 +1,4 @@
-package de.pandigo.mstemplateproject;
+package de.pandigo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
