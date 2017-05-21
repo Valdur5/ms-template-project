@@ -11,7 +11,8 @@
 		<module>ms-ws</module>
 		<module>ms-persistence</module>
 		<module>ms-tests</module>
-	</modules>
+        <module>ms-commons</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>ms-template-project</name>

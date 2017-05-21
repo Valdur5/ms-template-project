@@ -1,6 +1,7 @@
 TODO - Lib dependencies in the modules needed or in the toplevel pom?
 TODO - add dependecies between modules
 TODO - define maven goals to be used by CI tools
+TODO - Aspects and commons where?
 
 # ms-template-project
 
@@ -32,6 +33,7 @@ This prototype project is based on the following technologies:
 * Spring Boot - Core of the project, responsible for keeping all the components together. Also for dependency injection, configuration and adding the embedded tomcat to run the project without an extra java application server.
 * RAML - For defining the REST web service contract and for testing that we are stick to that contract.
 * Dozer - For mapping our database entries to Data Transfer Objects (DTO) which should be used by the REST webservice to keep the API clean and independent from the database representation.
+* Spring HATEOAS - TODO
 
 ### Testing
 
@@ -52,3 +54,8 @@ This prototype project is based on the following technologies:
 ### Security
 
 * TODO implement a very common and easy framework for security for the microservice as well.
+
+# Documentation
+
+* JSONdoc TODO
+* Javadoc TODO
