@@ -9,6 +9,10 @@ This project is the base for the Archetype: TODO put in name
 
 It shall not contain too fancy example code and design / programming patterns. The purpose of this project is provide a base for building a Microservice with a well selected set of technologies already configured and ready to run.
 
+## Links
+
+* http://localhost:8080/jsondoc-ui.html for exploring the REST API enter in the search field: http://localhost:8080/jsondoc
+
 ## Project Structure
 
 The project structure is the following (find more information in the README files placed in the different folders and modules):

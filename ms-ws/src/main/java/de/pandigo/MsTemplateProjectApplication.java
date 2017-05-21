@@ -1,5 +1,6 @@
 package de.pandigo;
 
+import org.jsondoc.spring.boot.starter.EnableJSONDoc;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //CHECKSTYLE:OFF
 @SpringBootApplication
+@EnableJSONDoc
 public class MsTemplateProjectApplication {
 
 	public static void main(String[] args) {

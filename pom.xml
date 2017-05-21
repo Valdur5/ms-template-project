@@ -31,6 +31,7 @@
 		<java.version>1.8</java.version>
 		<global.version>0.0.1-SNAPSHOT</global.version>
 		<start-class>de.pandigo.MsTemplateProjectApplication</start-class>
+		<jsondoc.version>1.2.17</jsondoc.version>
 	</properties>
 
 	<build>

@@ -1,14 +1,23 @@
 package de.pandigo.dto;
 
+import org.jsondoc.core.annotation.ApiObject;
+import org.jsondoc.core.annotation.ApiObjectField;
+
 /**
  * DTO for a mountain
  */
+@ApiObject
 public class Mountain{
 
+    @ApiObjectField(description = "The name of the mountain.")
     private String name;
+    @ApiObjectField(description = "The altitude of the mountain in meter.")
     private int altitude;
+    @ApiObjectField(description = "List of countries where the mountain is located, some mountains have more than one country.")
     private String[] countries;
+    @ApiObjectField(description = "Year of the first ascent.")
     private int firstAscent;
+    @ApiObjectField(description = "List of names of the first ascenders.")
     private String[] firstAscenders;
 
     public Mountain() {
