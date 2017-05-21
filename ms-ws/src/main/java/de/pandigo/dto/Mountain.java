@@ -2,19 +2,22 @@ package de.pandigo.dto;
 
 import org.jsondoc.core.annotation.ApiObject;
 import org.jsondoc.core.annotation.ApiObjectField;
+import org.springframework.hateoas.ResourceSupport;
+
+import java.util.List;
 
 /**
  * DTO for a mountain
  */
 @ApiObject
-public class Mountain{
+public class Mountain extends ResourceSupport {
 
     @ApiObjectField(description = "The name of the mountain.")
     private String name;
     @ApiObjectField(description = "The altitude of the mountain in meter.")
     private int altitude;
     @ApiObjectField(description = "List of countries where the mountain is located, some mountains have more than one country.")
-    private String[] countries;
+    private List<Country> countries;
     @ApiObjectField(description = "Year of the first ascent.")
     private int firstAscent;
     @ApiObjectField(description = "List of names of the first ascenders.")
@@ -24,10 +27,9 @@ public class Mountain{
 
     }
 
-    public Mountain(String name, int altitude, String[] countries) {
+    public Mountain(String name, int altitude) {
         this.name = name;
         this.altitude = altitude;
-        this.countries = countries;
     }
 
     public String getName() {
@@ -46,11 +48,11 @@ public class Mountain{
         this.altitude = altitude;
     }
 
-    public String[] getCountries() {
+    public List<Country> getCountries() {
         return countries;
     }
 
-    public void setCountries(String[] countries) {
+    public void setCountries(List<Country> countries) {
         this.countries = countries;
     }
 

@@ -1,7 +1,6 @@
-TODO - Lib dependencies in the modules needed or in the toplevel pom?
-TODO - add dependecies between modules
 TODO - define maven goals to be used by CI tools
-TODO - Aspects and commons where?
+TODO - Aspects
+TODO - What is with that RAML shit?
 
 # ms-template-project
 
@@ -19,6 +18,7 @@ The project structure is the following (find more information in the README file
 
 * data - Non build relevant files (like checkstyle configuration).
 * ms-business - Business logic only
+* ms-commons - Project independent classes (this should be in an extra project if you want to use it for different projects).
 * ms-persistence - Handling all the database stuff and place to define the models which have to be persisted.
 * ms-tests - Here are the system integration tests. All other tests should be in the corresponding module.
 * ms-ws - Module where the REST controller are located as well as the Data Transfer Objects which are sent to the client. Here is also the main entry point to start up the Spring Boot application.
@@ -61,5 +61,5 @@ This prototype project is based on the following technologies:
 
 # Documentation
 
-* JSONdoc TODO
-* Javadoc TODO
+* JSONdoc - For creating a interactive documentation for the REST Api which can be used by developer who are interested in consuming our service. The quality should be very high and all error codes should be exposed so that other developers have all information to completely use and understand our service.
+* Javadoc - Used to document all classes, methods, interface ... HTML generation is not set up but the project is ready for it, if you decide that you want it.

@@ -19,8 +19,6 @@ import org.springframework.web.context.WebApplicationContext;
 import static org.junit.Assert.assertNotNull;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-//TODO move to a commons lib
-
 // The @WebAppConfiguration annotation tells JUnit that this is a unit test for Spring MVC web components and
 // should thus run under a WebApplicationContext variety, not a standard ApplicationContext implementation.
 @WebAppConfiguration

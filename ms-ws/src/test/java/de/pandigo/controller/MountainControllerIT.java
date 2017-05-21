@@ -35,7 +35,7 @@ public class MountainControllerIT extends AbstractRestIT {
 
     @Test
     public void addMountain_mountainWasCreated() throws Exception {
-        Mountain mountain = new Mountain("Mount Everest", 8848, new String[]{"Nepal", "Tibet"});
+        Mountain mountain = new Mountain("Mount Everest", 8848);
 
         this.getMockMvc().perform(post("/mountains/")
                 .contentType(this.getContentType())
@@ -54,7 +54,7 @@ public class MountainControllerIT extends AbstractRestIT {
 
     @Test
     public void updateFullMountain_mountainFullyUpdated() throws Exception {
-        Mountain mountain = new Mountain("Mount Everest", 8847, new String[]{"Nepal", "Tibet"});
+        Mountain mountain = new Mountain("Mount Everest", 8847);
         this.getMockMvc().perform(put("/mountains/1")
                 .contentType(this.getContentType())
                 .content(populateMockHttpOutputStringWith(mountain)))
