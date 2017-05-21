@@ -6,11 +6,16 @@ get:
   responses: 
     200:
       body: 
-        type: <<item>>[]
+        type: <<typeName>>[]
+    403:
+      description: You don't have permission to access this recource.
+   
 post:
   description: Create a new <<resourcePathName | !singularize>>
   body: 
-    type: <<item>>
+    type: <<typeName>>
   responses: 
     201:
-      description: <<item>> created.
+      description: <<typeName>> created in collection.
+    403:
+      description: You don't have permission to access this recource.

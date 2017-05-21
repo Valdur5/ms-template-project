@@ -1,0 +1,44 @@
+#%RAML 1.0 ResourceType
+usage: Use this resourceType to represent any single item
+description: A single <<typeName>>
+
+get:
+  description: Get a <<typeName>>
+  responses: 
+    200:
+      description: A successful request.
+      body: 
+        type: <<typeName>>
+    403:
+      description: You don't have permission to access this recource.
+    404:
+      description: This resource does not exsist.
+put:
+  description: Update a <<typeName>>
+  body: 
+    type: <<typeName>>
+  responses: 
+    204:
+      description: The update was successful
+    403:
+      description: You don't have permission to update this recource.
+    404:
+      description: This resource does not exsist.
+patch:
+  description: Partally updates a <<typeName>>
+  responses: 
+    204:
+      description: The update was successful
+    403:
+      description: You don't have permission to update this recource.
+    404:
+      description: This resource does not exsist.
+delete:
+  description: Delete a <<typeName>>
+  responses: 
+    204:
+      description: The delete was successful
+    403:
+      description: You don't have permission to delete this recource.
+    404:
+      description: This resource does not exsist.

@@ -9,9 +9,9 @@ types:
 
 resourceTypes: 
   collection: !include resourceTypes/collection.raml
-  object: !include resourceTypes/object.raml
+  item: !include resourceTypes/item.raml
 
 /mountains:
-  type: { collection: { item: mountain } }
+  type: { collection: { typeName: mountain } }
   /{id}:
-    type: { object: { item: mountain } }
+    type: { item: { typeName: mountain } }
