@@ -30,7 +30,7 @@ This prototype project is based on the following technologies:
 ### Persistence
 
 * Spring Data JPA (Java Persistence API) - Spring Data JPA provides us access to the database without having to write all the code our self. It is based on hibernate and JDBC, it conforms to the official java standard JPA which means that we can switch in the future Spring Data JPA against some other implementation which is also JPA conform, for example a pure Hibernate solution.
-* H2 Database - In memory database. This is an example, this can be replaced easily with any other database or database driver which supports JPA. TODO I think spring takes it automatically from the classpath since we added it to our pom file so that it is not necessary to declare it somewhere that we want to use H2.
+* H2 Database - In memory database. This is an example, this can be replaced easily with any other database or database driver which supports JPA. Spring takes it automatically from the classpath since we added it to our pom file so that it is not necessary to declare it somewhere that we want to use H2.
 
 ### MVC / REST
 

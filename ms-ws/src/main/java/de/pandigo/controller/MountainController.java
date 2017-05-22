@@ -1,19 +1,38 @@
 package de.pandigo.controller;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.dozer.DozerBeanMapper;
+import org.dozer.Mapper;
+import org.jsondoc.core.annotation.Api;
+import org.jsondoc.core.annotation.ApiBodyObject;
+import org.jsondoc.core.annotation.ApiError;
+import org.jsondoc.core.annotation.ApiErrors;
+import org.jsondoc.core.annotation.ApiMethod;
+import org.jsondoc.core.annotation.ApiPathParam;
+import org.jsondoc.core.annotation.ApiResponseObject;
+import org.jsondoc.core.pojo.ApiStage;
+import org.jsondoc.core.pojo.ApiVisibility;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+import de.pandigo.domain.MountainEntity;
 import de.pandigo.dto.Country;
 import de.pandigo.dto.Mountain;
 import de.pandigo.dto.Mountains;
-import org.jsondoc.core.annotation.*;
-import org.jsondoc.core.pojo.ApiStage;
-import org.jsondoc.core.pojo.ApiVisibility;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
-
-import java.util.Arrays;
-
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import de.pandigo.services.MountainService;
 
 /**
  * MountainController provides all the basic features to manage mountains.
@@ -24,7 +43,10 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 public class MountainController {
 
     // TODO REMOVE THIS
-    private Mountains mountains = null;
+    private final Mountains mountains = null;
+
+    @Autowired
+    private MountainService mountainService;
 
     /**
      * REST method for getting all the existing mountains.
@@ -38,10 +60,10 @@ public class MountainController {
             @ApiError(code = "500", description = "Internal Server error.")
     })
     public @ApiResponseObject()
-    Mountains getAllMountains() {
-        if(mountains == null)
-            mountains = generateData();
-        return mountains;
+    List<MountainEntity> getAllMountains() {
+        // TODO MAP TO DTO
+        final List<MountainEntity> mountainEntities = this.mountainService.getAllMountains();
+        return mountainEntities;
     }
 
     /**
@@ -55,11 +77,12 @@ public class MountainController {
     @ApiErrors(apierrors = {
             @ApiError(code = "500", description = "Internal Server error.")
     })
-    public @ApiResponseObject() Mountain addMountain(@ApiBodyObject @RequestBody Mountain mountain) {
-        mountains.addMountain(mountain);
-        mountain.add(linkTo(methodOn(MountainController.class)
-                .getMountain(mountains.getMountains().size()-1)).withSelfRel());
-        mountain.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
+    public @ApiResponseObject() Mountain addMountain(@ApiBodyObject @RequestBody final Mountain mountain) {
+        final Mapper mapper = new DozerBeanMapper();
+        MountainEntity mountainEntity = mapper.map(mountain, MountainEntity.class);
+        mountainEntity.setDateAdded(LocalDate.now());
+        mountainEntity = this.mountainService.addMountain(mountainEntity);
+        mountain.add(linkTo(methodOn(MountainController.class).getMountain(mountainEntity.getId())).withSelfRel());
         return mountain;
     }
 
@@ -79,8 +102,9 @@ public class MountainController {
     public @ApiResponseObject()
     Mountain getMountain(
             @ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
-            @PathVariable int mountainId) {
-        return mountains.getMountains().get(mountainId);
+            @PathVariable final long mountainId) {
+        //return this.mountains.getMountains().get(mountainId);
+        return null;
     }
 
     /**
@@ -97,9 +121,9 @@ public class MountainController {
             @ApiError(code = "500", description = "Internal Server error.")
     })
     public void updateMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
-                               @PathVariable int mountainId,
-                               @ApiBodyObject @RequestBody Mountain mountain) {
-        mountains.setMountain(mountainId, mountain);
+                               @PathVariable final int mountainId,
+                               @ApiBodyObject @RequestBody final Mountain mountain) {
+        this.mountains.setMountain(mountainId, mountain);
     }
 
     /**
@@ -119,9 +143,9 @@ public class MountainController {
             @ApiError(code = "500", description = "Internal Server error.")
     })
     public void patchMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
-                              @PathVariable int mountainId,
-                              @ApiBodyObject @RequestBody Mountain mountain) {
-        mountains.setMountain(mountainId, mountain); // TODO this is no patch
+                              @PathVariable final int mountainId,
+                              @ApiBodyObject @RequestBody final Mountain mountain) {
+        this.mountains.setMountain(mountainId, mountain); // TODO this is no patch
     }
 
     /**
@@ -137,54 +161,55 @@ public class MountainController {
             @ApiError(code = "500", description = "Internal Server error.")
     })
     public void deleteMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
-                               @PathVariable int mountainId) {
-        mountains.deleteMountain(mountainId);
+                               @PathVariable final int mountainId) {
+        this.mountains.deleteMountain(mountainId);
     }
 
 
     private Mountains generateData() {
-        Country nepal = new Country("Nepal", 26424000);
+        final Country nepal = new Country("Nepal", 26424000);
         nepal.add(linkTo(methodOn(CountryController.class).getCountry(0)).withSelfRel());
-        Country tibet = new Country("Tibet", 5240504);
+        final Country tibet = new Country("Tibet", 5240504);
         tibet.add(linkTo(methodOn(CountryController.class).getCountry(1)).withSelfRel());
-        Country france = new Country("France", 66910000);
+        final Country france = new Country("France", 66910000);
         france.add(linkTo(methodOn(CountryController.class).getCountry(2)).withSelfRel());
-        Country italy = new Country("Italy", 60599000);
+        final Country italy = new Country("Italy", 60599000);
         italy.add(linkTo(methodOn(CountryController.class).getCountry(3)).withSelfRel());
 
-        Mountain montblanc = new Mountain("Mont Blanc", 4200);
+        final Mountain montblanc = new Mountain("Mont Blanc", 4200);
         montblanc.setCountries(Arrays.asList(france, italy));
         montblanc.setFirstAscent(1786);
         montblanc.setFirstAscenders(new String[]{"Jacques Balmat", "Michel-Gabriel Paccard"});
         montblanc.add(linkTo(methodOn(MountainController.class).getMountain(0)).withSelfRel());
         montblanc.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
 
-        Mountain mounteverest = new Mountain("Mount Everest", 8848);
+        final Mountain mounteverest = new Mountain("Mount Everest", 8848);
         mounteverest.setCountries(Arrays.asList(nepal,tibet));
         mounteverest.setFirstAscent(1953);
         mounteverest.setFirstAscenders(new String[]{"Edmund Hillary", "Tenzing Norgay"});
         mounteverest.add(linkTo(methodOn(MountainController.class).getMountain(1)).withSelfRel());
         mounteverest.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
 
-        Mountain lhotse = new Mountain("Lhotse", 8516);
+        final Mountain lhotse = new Mountain("Lhotse", 8516);
         lhotse.setCountries(Arrays.asList(nepal,tibet));
         lhotse.setFirstAscent(1956);
         lhotse.setFirstAscenders(new String[]{"Ernst Reiss", "Fritz Luchsinger"});
         lhotse.add(linkTo(methodOn(MountainController.class).getMountain(2)).withSelfRel());
         lhotse.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
 
-        Mountain chopolu = new Mountain("Cho Polu", 6735);
+        final Mountain chopolu = new Mountain("Cho Polu", 6735);
         chopolu.setCountries(Arrays.asList(nepal));
         chopolu.setFirstAscent(1984);
         chopolu.setFirstAscenders(new String[]{"Nil Bohigas"});
         chopolu.add(linkTo(methodOn(MountainController.class).getMountain(3)).withSelfRel());
         chopolu.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
 
-        Mountains mountains = new Mountains();
-        mountains.addMountain(montblanc);
-        mountains.addMountain(mounteverest);
-        mountains.addMountain(lhotse);
-        mountains.addMountain(chopolu);
+        final List<Mountain> mountainList = new ArrayList<>();
+        mountainList.add(montblanc);
+        mountainList.add(mounteverest);
+        mountainList.add(lhotse);
+        mountainList.add(chopolu);
+        final Mountains mountains = new Mountains(mountainList);
         mountains.add(linkTo(methodOn(MountainController.class).getAllMountains()).withSelfRel());
         mountains.add(linkTo(methodOn(CountryController.class).getAllCountries()).withRel("countries"));
         return mountains;

@@ -16,6 +16,7 @@
             <groupId>de.pandigo</groupId>
             <artifactId>ms-business</artifactId>
             <version>${global.version}</version>
+            <!-- TODO is it possible to exclude the peristence transient dependency -->
         </dependency>
         <dependency>
             <groupId>de.pandigo</groupId>
@@ -44,6 +45,16 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-hateoas</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>guru.nidi.raml</groupId>
+            <artifactId>raml-tester</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.dozer</groupId>
+            <artifactId>dozer</artifactId>
+            <version>5.4.0</version>
         </dependency>
     </dependencies>
 
