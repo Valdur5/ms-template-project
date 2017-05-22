@@ -6,10 +6,10 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiError;
@@ -32,6 +32,8 @@ import de.pandigo.domain.MountainEntity;
 import de.pandigo.dto.Country;
 import de.pandigo.dto.Mountain;
 import de.pandigo.dto.Mountains;
+import de.pandigo.hateoas.MountainsEnricher;
+import de.pandigo.mapper.MountainMapper;
 import de.pandigo.services.MountainService;
 
 /**
@@ -48,6 +50,15 @@ public class MountainController {
     @Autowired
     private MountainService mountainService;
 
+    @Autowired
+    private MountainMapper mountainMapper;
+
+    @Autowired
+    private MountainsEnricher mountainsEnricher;
+
+    public MountainController() {
+    }
+
     /**
      * REST method for getting all the existing mountains.
      *
@@ -60,10 +71,16 @@ public class MountainController {
             @ApiError(code = "500", description = "Internal Server error.")
     })
     public @ApiResponseObject()
-    List<MountainEntity> getAllMountains() {
-        // TODO MAP TO DTO
-        final List<MountainEntity> mountainEntities = this.mountainService.getAllMountains();
-        return mountainEntities;
+    Mountains getAllMountains() {
+        // Get all the mountains from our business layer.
+        final Mountains mountains = this.mountainMapper.mapEntitiesToDTO(this.mountainService.getAllMountains());
+
+        final Map<String, Object> actions = new HashMap<>();
+        actions.put("countries", methodOn(CountryController.class).getAllCountries());
+        actions.put("selectedMountains", methodOn(MountainController.class).getMountain(10));
+        actions.put("selectedMountains", methodOn(MountainController.class).getMountain(12));
+
+        return this.mountainsEnricher.enrich(mountains, actions);
     }
 
     /**
@@ -78,11 +95,12 @@ public class MountainController {
             @ApiError(code = "500", description = "Internal Server error.")
     })
     public @ApiResponseObject() Mountain addMountain(@ApiBodyObject @RequestBody final Mountain mountain) {
-        final Mapper mapper = new DozerBeanMapper();
-        MountainEntity mountainEntity = mapper.map(mountain, MountainEntity.class);
+
+        MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
         mountainEntity.setDateAdded(LocalDate.now());
         mountainEntity = this.mountainService.addMountain(mountainEntity);
         mountain.add(linkTo(methodOn(MountainController.class).getMountain(mountainEntity.getId())).withSelfRel());
+
         return mountain;
     }
 
@@ -123,7 +141,7 @@ public class MountainController {
     public void updateMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
                                @PathVariable final int mountainId,
                                @ApiBodyObject @RequestBody final Mountain mountain) {
-        this.mountains.setMountain(mountainId, mountain);
+        //this.mountains.setMountain(mountainId, mountain);
     }
 
     /**
@@ -145,7 +163,7 @@ public class MountainController {
     public void patchMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
                               @PathVariable final int mountainId,
                               @ApiBodyObject @RequestBody final Mountain mountain) {
-        this.mountains.setMountain(mountainId, mountain); // TODO this is no patch
+        //this.mountains.setMountain(mountainId, mountain); // TODO this is no patch
     }
 
     /**
@@ -162,7 +180,7 @@ public class MountainController {
     })
     public void deleteMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
                                @PathVariable final int mountainId) {
-        this.mountains.deleteMountain(mountainId);
+        //this.mountains.deleteMountain(mountainId);
     }
 
 
