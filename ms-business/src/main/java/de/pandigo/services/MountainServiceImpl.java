@@ -14,6 +14,9 @@ import de.pandigo.repositories.MountainRepository;
 public class MountainServiceImpl implements MountainService{
 
     @Autowired
+    private CountryService countryService;
+
+    @Autowired
     private MountainRepository mountainRepository;
 
     @Override
@@ -30,6 +33,10 @@ public class MountainServiceImpl implements MountainService{
 
     @Override
     public MountainEntity addMountain(final MountainEntity mountainEntity) {
+        List<CountryEntity> countryEntities = mountainEntity.getCountries();
+        for (CountryEntity countryEntity : countryEntities) {
+            countryService.addCountry(countryEntity);
+        }
         return this.mountainRepository.save(mountainEntity);
     }
 

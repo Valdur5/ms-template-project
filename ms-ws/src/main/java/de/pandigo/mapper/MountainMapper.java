@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import de.pandigo.controller.MountainController;
@@ -17,11 +18,11 @@ import de.pandigo.dto.Mountains;
 @Component
 public class MountainMapper extends DozerBeanMapper {
 
-    private final DozerBeanMapper mapper = new DozerBeanMapper();
+    @Autowired
+    private DozerBeanMapper mapper;
 
     public Mountain mapEntityToDTO(final MountainEntity mountainEntity) {
         final Mountain mountain = this.mapper.map(mountainEntity, Mountain.class);
-        mountain.add(linkTo(methodOn(MountainController.class).getMountain(mountainEntity.getId())).withSelfRel());
         return mountain;
     }
 

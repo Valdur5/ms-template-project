@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.pandigo.hateoas.ActionType;
+import de.pandigo.hateoas.HateoasAction;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiError;
@@ -44,9 +46,6 @@ import de.pandigo.services.MountainService;
 @RequestMapping("/mountains")
 public class MountainController {
 
-    // TODO REMOVE THIS
-    private final Mountains mountains = null;
-
     @Autowired
     private MountainService mountainService;
 
@@ -75,10 +74,12 @@ public class MountainController {
         // Get all the mountains from our business layer.
         final Mountains mountains = this.mountainMapper.mapEntitiesToDTO(this.mountainService.getAllMountains());
 
-        final Map<String, Object> actions = new HashMap<>();
-        actions.put("countries", methodOn(CountryController.class).getAllCountries());
-        actions.put("selectedMountains", methodOn(MountainController.class).getMountain(10));
-        actions.put("selectedMountains", methodOn(MountainController.class).getMountain(12));
+        List<HateoasAction> actions = new ArrayList<>();
+        actions.add(new HateoasAction(ActionType.showall, Arrays.asList(
+                methodOn(CountryController.class).getAllCountries(),
+                methodOn(MountainController.class).getAllMountains()
+        )));
+        actions.add(new HateoasAction(ActionType.back, methodOn(MountainController.class).getMountain(10)));
 
         return this.mountainsEnricher.enrich(mountains, actions);
     }
@@ -99,7 +100,7 @@ public class MountainController {
         MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
         mountainEntity.setDateAdded(LocalDate.now());
         mountainEntity = this.mountainService.addMountain(mountainEntity);
-        mountain.add(linkTo(methodOn(MountainController.class).getMountain(mountainEntity.getId())).withSelfRel());
+        mountain.add(linkTo(methodOn(MountainController.class).getMountain(mountainEntity.getMountainId())).withSelfRel());
 
         return mountain;
     }
@@ -181,55 +182,5 @@ public class MountainController {
     public void deleteMountain(@ApiPathParam(name = "mountainId", description = "The unique identifier of the mountain")
                                @PathVariable final int mountainId) {
         //this.mountains.deleteMountain(mountainId);
-    }
-
-
-    private Mountains generateData() {
-        final Country nepal = new Country("Nepal", 26424000);
-        nepal.add(linkTo(methodOn(CountryController.class).getCountry(0)).withSelfRel());
-        final Country tibet = new Country("Tibet", 5240504);
-        tibet.add(linkTo(methodOn(CountryController.class).getCountry(1)).withSelfRel());
-        final Country france = new Country("France", 66910000);
-        france.add(linkTo(methodOn(CountryController.class).getCountry(2)).withSelfRel());
-        final Country italy = new Country("Italy", 60599000);
-        italy.add(linkTo(methodOn(CountryController.class).getCountry(3)).withSelfRel());
-
-        final Mountain montblanc = new Mountain("Mont Blanc", 4200);
-        montblanc.setCountries(Arrays.asList(france, italy));
-        montblanc.setFirstAscent(1786);
-        montblanc.setFirstAscenders(new String[]{"Jacques Balmat", "Michel-Gabriel Paccard"});
-        montblanc.add(linkTo(methodOn(MountainController.class).getMountain(0)).withSelfRel());
-        montblanc.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
-
-        final Mountain mounteverest = new Mountain("Mount Everest", 8848);
-        mounteverest.setCountries(Arrays.asList(nepal,tibet));
-        mounteverest.setFirstAscent(1953);
-        mounteverest.setFirstAscenders(new String[]{"Edmund Hillary", "Tenzing Norgay"});
-        mounteverest.add(linkTo(methodOn(MountainController.class).getMountain(1)).withSelfRel());
-        mounteverest.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
-
-        final Mountain lhotse = new Mountain("Lhotse", 8516);
-        lhotse.setCountries(Arrays.asList(nepal,tibet));
-        lhotse.setFirstAscent(1956);
-        lhotse.setFirstAscenders(new String[]{"Ernst Reiss", "Fritz Luchsinger"});
-        lhotse.add(linkTo(methodOn(MountainController.class).getMountain(2)).withSelfRel());
-        lhotse.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
-
-        final Mountain chopolu = new Mountain("Cho Polu", 6735);
-        chopolu.setCountries(Arrays.asList(nepal));
-        chopolu.setFirstAscent(1984);
-        chopolu.setFirstAscenders(new String[]{"Nil Bohigas"});
-        chopolu.add(linkTo(methodOn(MountainController.class).getMountain(3)).withSelfRel());
-        chopolu.add(linkTo(methodOn(MountainController.class).getAllMountains()).withRel("mountains"));
-
-        final List<Mountain> mountainList = new ArrayList<>();
-        mountainList.add(montblanc);
-        mountainList.add(mounteverest);
-        mountainList.add(lhotse);
-        mountainList.add(chopolu);
-        final Mountains mountains = new Mountains(mountainList);
-        mountains.add(linkTo(methodOn(MountainController.class).getAllMountains()).withSelfRel());
-        mountains.add(linkTo(methodOn(CountryController.class).getAllCountries()).withRel("countries"));
-        return mountains;
     }
 }

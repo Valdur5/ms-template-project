@@ -3,29 +3,25 @@ package de.pandigo.domain;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class MountainEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long mountainId;
 
 	private String name;
 	private int altitude;
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany
 	private List<CountryEntity> countries;
+
 	private int firstAscent;
 	private String[] firstAscenders;
 
-	public void setId(final Long id) {
-		this.id = id;
+	public void setMountainId(final Long mountainId) {
+		this.mountainId = mountainId;
 	}
 
 	public void setDateAdded(final LocalDate dateAdded) {
@@ -39,9 +35,8 @@ public class MountainEntity {
 
 	}
 
-	public MountainEntity(final Long id, final String name, final int altitude, final List<CountryEntity> countries, final int firstAscent,
+	public MountainEntity(final String name, final int altitude, final List<CountryEntity> countries, final int firstAscent,
 	        final String[] firstAscenders, final LocalDate dateAdded) {
-	    this.id = id;
 		this.name = name;
 		this.altitude = altitude;
 		this.countries = countries;
@@ -50,8 +45,8 @@ public class MountainEntity {
 		this.dateAdded = dateAdded;
 	}
 
-	public Long getId() {
-		return this.id;
+	public Long getMountainId() {
+		return this.mountainId;
 	}
 
 	public String getName() {

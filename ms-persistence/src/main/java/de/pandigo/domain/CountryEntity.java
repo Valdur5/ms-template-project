@@ -1,25 +1,22 @@
 package de.pandigo.domain;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class CountryEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long countryId;
 
     private String name;
     private int inhabitants;
     // Example for an attribute we don't want to expose to the public.
-    private LocalTime dateAdded;
+    private LocalDate dateAdded;
 
-    public CountryEntity(final Long id, final String name, final int inhabitants, final LocalTime dateAdded) {
-        this.id = id;
+
+    public CountryEntity(final String name, final int inhabitants, final LocalDate dateAdded) {
         this.name = name;
         this.inhabitants = inhabitants;
         this.dateAdded = dateAdded;
@@ -29,11 +26,11 @@ public class CountryEntity {
 
     }
 
-    public Long getId() {
-        return this.id;
+    public Long getCountryId() {
+        return this.countryId;
     }
 
-    public LocalTime getDateAdded() {
+    public LocalDate getDateAdded() {
         return this.dateAdded;
     }
 

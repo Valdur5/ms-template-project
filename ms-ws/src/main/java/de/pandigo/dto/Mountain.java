@@ -12,6 +12,8 @@ import java.util.List;
 @ApiObject
 public class Mountain extends ResourceSupport {
 
+    @ApiObjectField(description = "The Id of the mountain.")
+    private long mountainId;
     @ApiObjectField(description = "The name of the mountain.")
     private String name;
     @ApiObjectField(description = "The altitude of the mountain in meter.")
@@ -27,9 +29,18 @@ public class Mountain extends ResourceSupport {
 
     }
 
-    public Mountain(String name, int altitude) {
+    public Mountain(long mountainId, String name, int altitude) {
+        this.mountainId = mountainId;
         this.name = name;
         this.altitude = altitude;
+    }
+
+    public long getMountainId() {
+        return mountainId;
+    }
+
+    public void setMountainId(long mountainId) {
+        this.mountainId = mountainId;
     }
 
     public String getName() {
