@@ -42,6 +42,7 @@ This prototype project is based on the following technologies:
 ### Testing
 
 * Spring Test - For running Integration tests.
+* Mockito - For mocking values.
 * jUnit - For writing unit tests.
 * Cucumber - For writing system integration tests.
 

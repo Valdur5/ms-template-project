@@ -17,7 +17,35 @@ import de.pandigo.test.AbstractRestIT;
 // to tell the SpringJUnit4ClassRunner (SpringRunner) where it should get information about the Spring application
 // under test. In former versions of Spring Boot this was SpringApplicationConfiguration.
 @SpringBootTest(classes = MsTemplateProjectApplication.class)
+//@TestPropertySource(locations = { "classpath:/test.properties" })
 public class MountainControllerIT extends AbstractRestIT {
+
+     /*@Test
+    // Here we connect the Test with the RAML definition.
+   @RamlDefinition(value = "classpath:/raml/foo.raml", baseUri = "http://{baseUri}")
+    public void whenGetFooWithSuccess() throws Exception {
+
+        // Arrange
+        final Long fooID = 1L;
+        final FooEntity fooEntity = new FooEntity();
+        fooEntity.setFooId(fooID);
+        fooEntity.setName("Foo name");
+        fooEntity.setDescription("Foo description");
+        fooEntity.setFooKind(FooType.ACCOUNTING);
+
+        // With Mockito we mock the return value of the FooService, since FooService is a Singleton service it is
+        // possible. Later when we access this object again indirectly with getMockMvc().perform() the same FooService
+        // will be used with the mocked up value we set up here.
+        when(this.fooService.getFooById(anyLong())).thenReturn(fooEntity);
+
+        // Act & Assert
+        getMockMvc().perform(get("/foos/"+fooID))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(ramlMatches())
+                .andExpect(jsonPath("$.identifier", is(1)));
+    }*/
+
 
     // TODO make failing tests as well!
 /*
