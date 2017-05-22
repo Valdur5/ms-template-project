@@ -59,7 +59,14 @@ This prototype project is based on the following technologies:
 
 * TODO implement a very common and easy framework for security for the microservice as well.
 
-# Documentation
+### Documentation
 
 * JSONdoc - For creating a interactive documentation for the REST Api which can be used by developer who are interested in consuming our service. The quality should be very high and all error codes should be exposed so that other developers have all information to completely use and understand our service.
 * Javadoc - Used to document all classes, methods, interface ... HTML generation is not set up but the project is ready for it, if you decide that you want it.
+
+### Quality
+
+* Checkstyle - Plugin for the IDE, checks the code for styling issues so that all code looks uniform. The config can be found in the root of the project under data/qa.
+* Findbugs - Plugin fot the IDE, checks the code for common failure patterns. The config can be found in the root of the project under data/qa.
+* PMD - TODO ??? The config can be found in the root of the project under data/qa.
+* Sonar - TODO ????
