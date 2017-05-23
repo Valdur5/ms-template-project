@@ -1,8 +1,5 @@
 package de.pandigo.mapper;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +7,6 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import de.pandigo.controller.MountainController;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.dto.Mountain;
 import de.pandigo.dto.Mountains;
@@ -22,8 +18,7 @@ public class MountainMapper extends DozerBeanMapper {
     private DozerBeanMapper mapper;
 
     public Mountain mapEntityToDTO(final MountainEntity mountainEntity) {
-        final Mountain mountain = this.mapper.map(mountainEntity, Mountain.class);
-        return mountain;
+        return this.mapper.map(mountainEntity, Mountain.class);
     }
 
     /**

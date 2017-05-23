@@ -1,8 +1,24 @@
 package de.pandigo.controller;
 
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.time.LocalDate;
+import java.util.Arrays;
+
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import de.pandigo.MsTemplateProjectApplication;
+import de.pandigo.domain.CountryEntity;
+import de.pandigo.domain.MountainEntity;
+import de.pandigo.services.MountainService;
 import de.pandigo.test.AbstractRestIT;
 
 
@@ -19,6 +35,28 @@ import de.pandigo.test.AbstractRestIT;
 @SpringBootTest(classes = MsTemplateProjectApplication.class)
 //@TestPropertySource(locations = { "classpath:/test.properties" })
 public class MountainControllerIT extends AbstractRestIT {
+
+    // Because we have created a bean definition in our RestITConfig for the creation of that object we will now get
+    // an mockito mock object autowired for our test instead of the original service which is wired to the database.
+    @Autowired
+    private MountainService mountainService;
+
+    @Test
+    public void test() throws Exception {
+
+        // Arrange
+        final MountainEntity mountainEntity = new MountainEntity("Mount Rushmore", 2894, Arrays.asList(
+                new CountryEntity("USA", 240950249, LocalDate.now()),
+                new CountryEntity("Canada", 19055029, LocalDate.now())
+        ), 2004, new String[] {"Ape Simpson", "Homer Simpson"}, LocalDate.now());
+
+        when(this.mountainService.getMountain(anyLong())).thenReturn(mountainEntity);
+
+        getMockMvc().perform(get("/mountains/"+1L))
+                .andExpect(status().isOk())
+                //.andExpect(ramlMatches())
+                .andExpect(jsonPath("$.name", is("Mount Rushmore")));
+    }
 
      /*@Test
     // Here we connect the Test with the RAML definition.
