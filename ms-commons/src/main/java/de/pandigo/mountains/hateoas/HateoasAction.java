@@ -1,22 +1,22 @@
-package de.pandigo.hateoas;
+package de.pandigo.mountains.hateoas;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HateoasAction {
 
-    private ActionType type;
+    private String type;
     private List<Object> links;
 
-    public ActionType getType() {
+    String getType() {
         return type;
     }
 
-    public void setType(ActionType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    public List<Object> getLinks() {
+    List<Object> getLinks() {
         return links;
     }
 
@@ -24,12 +24,12 @@ public class HateoasAction {
         this.links = links;
     }
 
-    public HateoasAction(ActionType type, List<Object> links) {
+    public HateoasAction(String type, List<Object> links) {
         this.type = type;
         this.links = links;
     }
 
-    public HateoasAction(ActionType type, Object link) {
+    public HateoasAction(String type, Object link) {
         this.type = type;
         this.links = new ArrayList<>();
         this.links.add(link);

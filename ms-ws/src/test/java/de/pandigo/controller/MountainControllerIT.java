@@ -19,7 +19,7 @@ import de.pandigo.MsTemplateProjectApplication;
 import de.pandigo.domain.CountryEntity;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.services.MountainService;
-import de.pandigo.test.AbstractRestIT;
+import de.pandigo.mountains.test.AbstractRestIT;
 
 
 /**

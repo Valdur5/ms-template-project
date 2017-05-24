@@ -2,6 +2,8 @@ package de.pandigo.hateoas;
 
 import de.pandigo.controller.MountainController;
 import de.pandigo.dto.Mountain;
+import de.pandigo.mountains.hateoas.AbstractEnricher;
+import de.pandigo.mountains.hateoas.HateoasAction;
 
 import java.util.List;
 

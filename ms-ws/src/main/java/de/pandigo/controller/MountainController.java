@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import de.pandigo.hateoas.ActionType;
 import org.jsondoc.core.annotation.Api;
 import org.jsondoc.core.annotation.ApiBodyObject;
 import org.jsondoc.core.annotation.ApiError;
@@ -29,8 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.dto.Mountain;
 import de.pandigo.dto.Mountains;
-import de.pandigo.hateoas.ActionType;
-import de.pandigo.hateoas.HateoasAction;
+import de.pandigo.mountains.hateoas.HateoasAction;
 import de.pandigo.hateoas.MountainsEnricher;
 import de.pandigo.mapper.MountainMapper;
 import de.pandigo.services.MountainService;
@@ -68,9 +68,9 @@ public class MountainController {
 		final Mountains mountains = this.mountainMapper.mapEntitiesToDTO(this.mountainService.getAllMountains());
 
 		final List<HateoasAction> actions = new ArrayList<>();
-		actions.add(new HateoasAction(ActionType.showall,
+		actions.add(new HateoasAction(ActionType.showall.toString(),
 		        Arrays.asList(methodOn(CountryController.class).getAllCountries(), methodOn(MountainController.class).getAllMountains())));
-		actions.add(new HateoasAction(ActionType.back, methodOn(MountainController.class).getMountain(10)));
+		actions.add(new HateoasAction(ActionType.back.toString(), methodOn(MountainController.class).getMountain(10)));
 
 		return this.mountainsEnricher.enrich(mountains, actions);
 	}
