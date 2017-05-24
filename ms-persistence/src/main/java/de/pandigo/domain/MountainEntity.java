@@ -14,9 +14,6 @@ public class MountainEntity {
 
 	private String name;
 	private int altitude;
-	@OneToMany
-	private List<CountryEntity> countries;
-
 	private int firstAscent;
 	private String[] firstAscenders;
 
@@ -35,11 +32,10 @@ public class MountainEntity {
 
 	}
 
-	public MountainEntity(final String name, final int altitude, final List<CountryEntity> countries, final int firstAscent,
+	public MountainEntity(final String name, final int altitude, final int firstAscent,
 	        final String[] firstAscenders, final LocalDate dateAdded) {
 		this.name = name;
 		this.altitude = altitude;
-		this.countries = countries;
 		this.firstAscent = firstAscent;
 		this.firstAscenders = firstAscenders;
 		this.dateAdded = dateAdded;
@@ -55,10 +51,6 @@ public class MountainEntity {
 
 	public int getAltitude() {
 		return this.altitude;
-	}
-
-	public List<CountryEntity> getCountries() {
-		return this.countries;
 	}
 
 	public int getFirstAscent() {
@@ -79,10 +71,6 @@ public class MountainEntity {
 
 	public void setAltitude(final int altitude) {
 		this.altitude = altitude;
-	}
-
-	public void setCountries(final List<CountryEntity> countries) {
-		this.countries = countries;
 	}
 
 	public void setFirstAscent(final int firstAscent) {

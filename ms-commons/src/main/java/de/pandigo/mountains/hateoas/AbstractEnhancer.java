@@ -6,12 +6,12 @@ import java.util.List;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
-public abstract class AbstractEnricher<T extends ResourceSupport> {
+abstract class AbstractEnhancer<T extends ResourceSupport> {
 
-    public T enrich(T obj, List<HateoasAction> actions) {
+    T enhanceWithActions(T obj, List<HateoasAction> actions) {
         for (final HateoasAction action : actions) {
             for (Object link : action.getLinks()) {
-                obj.add(linkTo(link).withRel(action.getType().toString()));
+                obj.add(linkTo(link).withRel(action.getType()));
             }
         }
         return obj;

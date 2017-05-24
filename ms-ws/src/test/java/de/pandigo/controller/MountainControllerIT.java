@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import de.pandigo.MsTemplateProjectApplication;
-import de.pandigo.domain.CountryEntity;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.services.MountainService;
 import de.pandigo.mountains.test.AbstractRestIT;
@@ -45,10 +44,7 @@ public class MountainControllerIT extends AbstractRestIT {
     public void test() throws Exception {
 
         // Arrange
-        final MountainEntity mountainEntity = new MountainEntity("Mount Rushmore", 2894, Arrays.asList(
-                new CountryEntity("USA", 240950249, LocalDate.now()),
-                new CountryEntity("Canada", 19055029, LocalDate.now())
-        ), 2004, new String[] {"Ape Simpson", "Homer Simpson"}, LocalDate.now());
+        final MountainEntity mountainEntity = new MountainEntity("Mount Rushmore", 2894, 2004, new String[] {"Ape Simpson", "Homer Simpson"}, LocalDate.now());
 
         when(this.mountainService.getMountain(anyLong())).thenReturn(mountainEntity);
 

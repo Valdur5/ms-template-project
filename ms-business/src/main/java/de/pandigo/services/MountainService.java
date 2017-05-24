@@ -2,7 +2,6 @@ package de.pandigo.services;
 
 import java.util.List;
 
-import de.pandigo.domain.CountryEntity;
 import de.pandigo.domain.MountainEntity;
 
 public interface MountainService {
@@ -37,12 +36,5 @@ public interface MountainService {
      * @param id - The id of the mountain which should be deleted.
      */
     void deleteMountain(Long id);
-
-    /**
-     * This methods returns a list of mountains which are located in the given country.
-     * @param countryEntity - The country you want the mountains for.
-     * @return - List of mountains.
-     */
-    List<MountainEntity> getAllMountainsInCountry(CountryEntity countryEntity);
 
 }

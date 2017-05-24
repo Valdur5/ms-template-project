@@ -6,15 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.pandigo.domain.CountryEntity;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.repositories.MountainRepository;
 
 @Service
 public class MountainServiceImpl implements MountainService{
-
-    @Autowired
-    private CountryService countryService;
 
     @Autowired
     private MountainRepository mountainRepository;
@@ -33,10 +29,6 @@ public class MountainServiceImpl implements MountainService{
 
     @Override
     public MountainEntity addMountain(final MountainEntity mountainEntity) {
-        List<CountryEntity> countryEntities = mountainEntity.getCountries();
-        for (CountryEntity countryEntity : countryEntities) {
-            countryService.addCountry(countryEntity);
-        }
         return this.mountainRepository.save(mountainEntity);
     }
 
@@ -50,8 +42,4 @@ public class MountainServiceImpl implements MountainService{
         this.mountainRepository.delete(id);
     }
 
-    @Override
-    public List<MountainEntity> getAllMountainsInCountry(final CountryEntity countryEntity) {
-        return null;
-    }
 }
