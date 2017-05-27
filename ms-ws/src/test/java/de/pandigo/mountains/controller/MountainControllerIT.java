@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import de.pandigo.mountains.MsTemplateProjectApplication;
-import de.pandigo.domain.MountainEntity;
+import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
 import org.wscale.commons.test.AbstractRestIT;
 

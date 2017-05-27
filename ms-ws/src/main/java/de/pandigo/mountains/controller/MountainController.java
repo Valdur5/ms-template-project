@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import de.pandigo.domain.MountainEntity;
+import org.wscale.mountains.domain.MountainEntity;
 import de.pandigo.mountains.dto.Mountain;
 import de.pandigo.mountains.mapper.MountainMapper;
 import org.wscale.mountains.service.MountainService;

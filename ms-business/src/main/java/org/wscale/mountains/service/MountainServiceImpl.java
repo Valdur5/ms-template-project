@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import de.pandigo.domain.MountainEntity;
-import de.pandigo.repositories.MountainRepository;
+import org.wscale.mountains.domain.MountainEntity;
+import org.wscale.mountains.repositories.MountainRepository;
 
 @Service
 public class MountainServiceImpl implements MountainService{

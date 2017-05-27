@@ -1,6 +1,6 @@
 package de.pandigo.mountains.merger;
 
-import de.pandigo.domain.MountainEntity;
+import org.wscale.mountains.domain.MountainEntity;
 import org.junit.Test;
 
 import java.time.LocalDate;

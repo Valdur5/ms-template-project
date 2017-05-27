@@ -1,7 +1,6 @@
-package de.pandigo.domain;
+package org.wscale.mountains.domain;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.*;
 

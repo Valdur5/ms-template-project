@@ -1,8 +1,8 @@
-package de.pandigo.repositories;
+package org.wscale.mountains.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import de.pandigo.domain.MountainEntity;
+import org.wscale.mountains.domain.MountainEntity;
 
 public interface MountainRepository extends CrudRepository<MountainEntity, Long> {
 

@@ -2,7 +2,7 @@ package org.wscale.mountains.service;
 
 import java.util.List;
 
-import de.pandigo.domain.MountainEntity;
+import org.wscale.mountains.domain.MountainEntity;
 
 public interface MountainService {
 
