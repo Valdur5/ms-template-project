@@ -1,4 +1,4 @@
-package de.pandigo.dto;
+package de.pandigo.mountains.dto;
 
 import org.springframework.hateoas.ResourceSupport;
 

@@ -1,4 +1,4 @@
-package de.pandigo;
+package de.pandigo.mountains;
 
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.services.MountainService;
@@ -10,7 +10,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 

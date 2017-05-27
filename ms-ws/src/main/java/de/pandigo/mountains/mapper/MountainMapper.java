@@ -1,4 +1,4 @@
-package de.pandigo.mapper;
+package de.pandigo.mountains.mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import de.pandigo.domain.MountainEntity;
-import de.pandigo.dto.Mountain;
+import de.pandigo.mountains.dto.Mountain;
 
 @Component
 public class MountainMapper extends DozerBeanMapper {

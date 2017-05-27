@@ -1,12 +1,12 @@
-package de.pandigo.controller;
+package de.pandigo.mountains.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.time.LocalDate;
 
-import de.pandigo.hateoas.MountainNavigationEnhancer;
+import de.pandigo.mountains.hateoas.MountainNavigationEnhancer;
 import de.pandigo.commons.dto.ItemCollection;
-import de.pandigo.hateoas.ActionType;
+import de.pandigo.mountains.hateoas.ActionType;
 import de.pandigo.commons.hateoas.ItemCollectionEnhancer;
 import de.pandigo.commons.hateoas.HateoasAction;
 import de.pandigo.mountains.merger.MountainMerger;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.pandigo.domain.MountainEntity;
-import de.pandigo.dto.Mountain;
-import de.pandigo.mapper.MountainMapper;
+import de.pandigo.mountains.dto.Mountain;
+import de.pandigo.mountains.mapper.MountainMapper;
 import de.pandigo.services.MountainService;
 
 /**
