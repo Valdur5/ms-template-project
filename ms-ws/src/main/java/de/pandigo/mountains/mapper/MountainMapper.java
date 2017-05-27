@@ -3,7 +3,7 @@ package de.pandigo.mountains.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.pandigo.commons.dto.ItemCollection;
+import org.wscale.commons.dto.ItemCollection;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

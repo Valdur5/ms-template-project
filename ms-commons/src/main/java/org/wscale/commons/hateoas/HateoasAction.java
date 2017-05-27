@@ -1,4 +1,4 @@
-package de.pandigo.commons.hateoas;
+package org.wscale.commons.hateoas;
 
 import java.util.ArrayList;
 import java.util.List;

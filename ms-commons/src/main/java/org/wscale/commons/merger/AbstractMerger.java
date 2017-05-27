@@ -1,4 +1,4 @@
-package de.pandigo.commons.merger;
+package org.wscale.commons.merger;
 
 import java.time.LocalDate;
 

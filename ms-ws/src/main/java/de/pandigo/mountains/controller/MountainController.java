@@ -5,10 +5,10 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import java.time.LocalDate;
 
 import de.pandigo.mountains.hateoas.MountainNavigationEnhancer;
-import de.pandigo.commons.dto.ItemCollection;
+import org.wscale.commons.dto.ItemCollection;
 import de.pandigo.mountains.hateoas.ActionType;
-import de.pandigo.commons.hateoas.ItemCollectionEnhancer;
-import de.pandigo.commons.hateoas.HateoasAction;
+import org.wscale.commons.hateoas.ItemCollectionEnhancer;
+import org.wscale.commons.hateoas.HateoasAction;
 import de.pandigo.mountains.merger.MountainMerger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

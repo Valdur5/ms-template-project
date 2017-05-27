@@ -1,4 +1,4 @@
-package de.pandigo.commons.test;
+package org.wscale.commons.test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

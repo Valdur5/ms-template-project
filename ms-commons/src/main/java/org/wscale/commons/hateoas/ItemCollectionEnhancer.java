@@ -1,6 +1,6 @@
-package de.pandigo.commons.hateoas;
+package org.wscale.commons.hateoas;
 
-import de.pandigo.commons.dto.ItemCollection;
+import org.wscale.commons.dto.ItemCollection;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

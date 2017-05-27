@@ -1,6 +1,6 @@
 package de.pandigo.mountains.merger;
 
-import de.pandigo.commons.merger.AbstractMerger;
+import org.wscale.commons.merger.AbstractMerger;
 import de.pandigo.domain.MountainEntity;
 import org.springframework.stereotype.Component;
 

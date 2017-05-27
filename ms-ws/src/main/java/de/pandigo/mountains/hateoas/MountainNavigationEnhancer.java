@@ -2,8 +2,8 @@ package de.pandigo.mountains.hateoas;
 
 import de.pandigo.mountains.controller.MountainController;
 import de.pandigo.mountains.dto.Mountain;
-import de.pandigo.commons.hateoas.HateoasAction;
-import de.pandigo.commons.hateoas.ItemEnhancer;
+import org.wscale.commons.hateoas.HateoasAction;
+import org.wscale.commons.hateoas.ItemEnhancer;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

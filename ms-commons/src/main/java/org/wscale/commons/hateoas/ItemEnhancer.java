@@ -1,4 +1,4 @@
-package de.pandigo.commons.hateoas;
+package org.wscale.commons.hateoas;
 
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Component;

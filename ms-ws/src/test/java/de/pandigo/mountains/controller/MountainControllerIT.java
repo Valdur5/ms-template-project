@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import de.pandigo.mountains.MsTemplateProjectApplication;
 import de.pandigo.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
-import de.pandigo.commons.test.AbstractRestIT;
+import org.wscale.commons.test.AbstractRestIT;
 
 
 /**

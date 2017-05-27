@@ -1,4 +1,4 @@
-package de.pandigo.commons.dto;
+package org.wscale.commons.dto;
 
 import org.springframework.hateoas.ResourceSupport;
 
