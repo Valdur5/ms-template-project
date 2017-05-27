@@ -1,4 +1,4 @@
-package de.pandigo.mountains.hateoas;
+package de.pandigo.commons.hateoas;
 
 import java.util.ArrayList;
 import java.util.List;

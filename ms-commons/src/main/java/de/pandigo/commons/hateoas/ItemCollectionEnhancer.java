@@ -1,6 +1,6 @@
-package de.pandigo.mountains.hateoas;
+package de.pandigo.commons.hateoas;
 
-import de.pandigo.mountains.dto.ItemCollection;
+import de.pandigo.commons.dto.ItemCollection;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

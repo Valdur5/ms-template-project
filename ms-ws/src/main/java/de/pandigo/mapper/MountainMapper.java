@@ -3,15 +3,13 @@ package de.pandigo.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.pandigo.mountains.dto.ItemCollection;
+import de.pandigo.commons.dto.ItemCollection;
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.dto.Mountain;
-
-//TODO commons?
 
 @Component
 public class MountainMapper extends DozerBeanMapper {

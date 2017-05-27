@@ -1,4 +1,4 @@
-package de.pandigo.mountains.test;
+package de.pandigo.commons.test;
 
 import java.io.IOException;
 import java.nio.charset.Charset;

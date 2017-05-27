@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import de.pandigo.MsTemplateProjectApplication;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.services.MountainService;
-import de.pandigo.mountains.test.AbstractRestIT;
+import de.pandigo.commons.test.AbstractRestIT;
 
 
 /**
