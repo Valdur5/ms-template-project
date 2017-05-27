@@ -1,4 +1,4 @@
-package de.pandigo.mountains.merger;
+package org.wscale.mountains.merger;
 
 import org.wscale.commons.merger.AbstractMerger;
 import org.wscale.mountains.domain.MountainEntity;

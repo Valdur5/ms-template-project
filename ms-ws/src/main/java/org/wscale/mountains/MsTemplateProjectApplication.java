@@ -1,4 +1,4 @@
-package de.pandigo.mountains;
+package org.wscale.mountains;
 
 import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;

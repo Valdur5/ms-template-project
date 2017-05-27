@@ -1,4 +1,4 @@
-package de.pandigo.mountains.controller;
+package org.wscale.mountains.controller;
 
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import de.pandigo.mountains.MsTemplateProjectApplication;
+import org.wscale.mountains.MsTemplateProjectApplication;
 import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
 import org.wscale.commons.test.AbstractRestIT;

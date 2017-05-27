@@ -1,4 +1,4 @@
-package de.pandigo.mountains.config;
+package org.wscale.mountains.config;
 
 import static org.mockito.Mockito.mock;
 

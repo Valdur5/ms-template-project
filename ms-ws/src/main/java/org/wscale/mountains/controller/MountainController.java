@@ -1,15 +1,15 @@
-package de.pandigo.mountains.controller;
+package org.wscale.mountains.controller;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.time.LocalDate;
 
-import de.pandigo.mountains.hateoas.MountainNavigationEnhancer;
+import org.wscale.mountains.hateoas.MountainNavigationEnhancer;
 import org.wscale.commons.dto.ItemCollection;
-import de.pandigo.mountains.hateoas.ActionType;
+import org.wscale.mountains.hateoas.ActionType;
 import org.wscale.commons.hateoas.ItemCollectionEnhancer;
 import org.wscale.commons.hateoas.HateoasAction;
-import de.pandigo.mountains.merger.MountainMerger;
+import org.wscale.mountains.merger.MountainMerger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.wscale.mountains.domain.MountainEntity;
-import de.pandigo.mountains.dto.Mountain;
-import de.pandigo.mountains.mapper.MountainMapper;
+import org.wscale.mountains.dto.Mountain;
+import org.wscale.mountains.mapper.MountainMapper;
 import org.wscale.mountains.service.MountainService;
 
 /**
