@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import de.pandigo.domain.MountainEntity;
 import de.pandigo.mountains.dto.Mountain;
 import de.pandigo.mountains.mapper.MountainMapper;
-import de.pandigo.services.MountainService;
+import org.wscale.mountains.service.MountainService;
 
 /**
  * MountainController provides all the basic features to manage mountains.

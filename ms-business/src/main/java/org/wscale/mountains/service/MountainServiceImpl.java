@@ -1,4 +1,4 @@
-package de.pandigo.services;
+package org.wscale.mountains.service;
 
 import java.util.ArrayList;
 import java.util.List;

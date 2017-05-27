@@ -1,7 +1,7 @@
 package de.pandigo.mountains;
 
 import de.pandigo.domain.MountainEntity;
-import de.pandigo.services.MountainService;
+import org.wscale.mountains.service.MountainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
