@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.LocalDate;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 // We want the rule that there should be no main files, this is the only exception.
 // That's why we turn checkstyle off here and keep the rule.

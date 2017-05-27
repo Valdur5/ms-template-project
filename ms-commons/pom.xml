@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ms-template-project</artifactId>
-        <groupId>de.pandigo</groupId>
+        <groupId>org.wscale</groupId>
         <version>${global.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
