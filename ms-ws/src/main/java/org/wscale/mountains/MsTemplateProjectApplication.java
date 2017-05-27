@@ -1,5 +1,6 @@
 package org.wscale.mountains;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 
 //CHECKSTYLE:OFF
 @SpringBootApplication
+@ComponentScan("org.wscale") // TODO I dont know what to think about this.
 public class MsTemplateProjectApplication {
 
 	@Autowired

@@ -14,6 +14,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import org.wscale.commons.exceptions.NotFoundRuntimeException;
 import org.wscale.mountains.MsTemplateProjectApplication;
 import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
@@ -34,23 +35,39 @@ import org.wscale.commons.test.AbstractRestIT;
 //@TestPropertySource(locations = { "classpath:/test.properties" })
 public class MountainControllerIT extends AbstractRestIT {
 
+    private static final String MOCK_NAME = "Mount Rushmore";
+    private static final int MOCK_ALTITUDE = 8488;
+    private static final int MOCK_FIRSTASCENT = 1952;
+    private static final String[] MOCK_FIRSTASCENDERS = new String[] {"Hillary","Some other guy"};
+    private static final LocalDate MOCK_DATE = LocalDate.now();
+
+
+
     // Because we have created a bean definition in our RestITConfig for the creation of that object we will now get
     // an mockito mock object autowired for our test instead of the original service which is wired to the database.
     @Autowired
     private MountainService mountainService;
 
     @Test
-    public void test() throws Exception {
+    public void getMountain_mountainExist_returnMountain() throws Exception {
 
         // Arrange
-        final MountainEntity mountainEntity = new MountainEntity("Mount Rushmore", 2894, 2004, new String[] {"Ape Simpson", "Homer Simpson"}, LocalDate.now());
-
+        final MountainEntity mountainEntity = new MountainEntity(MOCK_NAME, MOCK_ALTITUDE,
+                MOCK_FIRSTASCENT, MOCK_FIRSTASCENDERS, MOCK_DATE);
         when(this.mountainService.getMountain(anyLong())).thenReturn(mountainEntity);
 
+
+        // Act & Assert
         getMockMvc().perform(get("/mountains/"+1L))
                 .andExpect(status().isOk())
                 //.andExpect(ramlMatches())
-                .andExpect(jsonPath("$.name", is("Mount Rushmore")));
+                .andExpect(jsonPath("$.name", is(MOCK_NAME)));
+    }
+
+    @Test(expected = NotFoundRuntimeException.class)
+    public void getMountain_givenIdNotExists_returns404() throws Exception {
+        // Arrange, Act & Assert
+        getMockMvc().perform(get("/mountains/-1"));
     }
 
      /*@Test
