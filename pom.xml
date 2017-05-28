@@ -12,7 +12,8 @@
 		<module>ms-business</module>
 		<module>ms-ws</module>
 		<module>ms-tests</module>
-    </modules>
+		<module>ms-commons-tests</module>
+	</modules>
 	<packaging>pom</packaging>
 
 	<name>mountains</name>
@@ -32,15 +33,5 @@
 		<start-class>org.wscale.mountains.MsTemplateProjectApplication</start-class>
 		<jsondoc.version>1.2.17</jsondoc.version>
 	</properties>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 
 </project>

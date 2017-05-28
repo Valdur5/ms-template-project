@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,8 @@ import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
-
-import static org.junit.Assert.assertNotNull;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
 // The @WebAppConfiguration annotation tells JUnit that this is a unit test for Spring MVC web components and
 // should thus run under a WebApplicationContext variety, not a standard ApplicationContext implementation.
@@ -60,7 +59,7 @@ public abstract class AbstractIT {
                 .findAny()
                 .orElse(null);
 
-        assertNotNull("the JSON message converter must not be null",
+        Assert.assertNotNull("the JSON message converter must not be null",
                 this.mappingJackson2HttpMessageConverter);
     }
 
@@ -69,7 +68,7 @@ public abstract class AbstractIT {
         // Build a MockMvc instance using the given, fully initialized refreshed WebApplicationContext. The
         // org.springframework.web.servlet.DispatcherServlet will use the context to discover Spring MVC infrastructure
         // and application controllers in it. The context must have been configured with a javax.servlet.ServletContext.
-        this.mockMvc = webAppContextSetup(this.webApplicationContext).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
     }
 
     public MediaType getContentType() {
