@@ -17,7 +17,7 @@ public interface MountainService {
      * @param id - The id of the mountain.
      * @return - The mountain object.
      */
-    MountainEntity getMountain(Long id);
+    MountainEntity getMountain(long id);
 
     /**
      * Adds a mountain.
@@ -29,12 +29,19 @@ public interface MountainService {
      * Updates a mountain.
      * @param mountainEntity - The object which should be replaced.
      */
-    void updateMountain(MountainEntity mountainEntity);
+    void updateMountain(long id, MountainEntity mountainEntity);
+
+    /**
+     * Patches partially a mountain.
+     * @param id - The id of the mountain which should be patched.
+     * @param mountainEntity - The object which should be replaced.
+     */
+    void patchMountain(long id, MountainEntity mountainEntity);
 
     /**
      * Deletes a mountain.
      * @param id - The id of the mountain which should be deleted.
      */
-    void deleteMountain(Long id);
+    void deleteMountain(long id);
 
 }

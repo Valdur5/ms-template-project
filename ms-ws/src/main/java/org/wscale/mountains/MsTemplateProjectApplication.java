@@ -42,21 +42,25 @@ public class MsTemplateProjectApplication {
 			final MountainEntity montblanc = new MountainEntity(
 					"Mont Blanc", 4200, 1786,
 					new String[]{"Jacques Balmat", "Michel-Gabriel Paccard"}, LocalDate.now());
+			montblanc.setMountainId(0L);
 			mountainService.addMountain(montblanc);
 
 			final MountainEntity mounteverest = new MountainEntity(
 					"Mount Everest", 8848, 1953,
 					new String[]{"Edmund Hillary", "Tenzing Norgay"}, LocalDate.now());
+			mounteverest.setMountainId(0L);
 			mountainService.addMountain(mounteverest);
 
 			final MountainEntity lhotse = new MountainEntity(
 					"Lhotse", 8516, 1956,
 					new String[]{"Ernst Reiss", "Fritz Luchsinger"}, LocalDate.now());
+			lhotse.setMountainId(0L);
 			mountainService.addMountain(lhotse);
 
 			final MountainEntity chopolu = new MountainEntity(
 					"Cho Polu", 6735, 1984,
 					new String[]{"Nil Bohigas"}, LocalDate.now());
+			chopolu.setMountainId(0L);
 			mountainService.addMountain(chopolu);
 		};
 	}

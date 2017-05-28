@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 // Spring TestContext Framework to standard JUnit tests by means of the TestContextManager and associated support
 // classes and annotations.
 @RunWith(SpringRunner.class)
-public abstract class AbstractRestIT {
+public abstract class AbstractIT {
 
     // We define here the content type of the payload for our POST requests and the content type we get back from
     // GET requests. A client might decide which parser to invoke based on the Content-Type header in the request message

@@ -18,7 +18,7 @@ import org.wscale.commons.exceptions.errors.NotFoundRuntimeException;
 import org.wscale.mountains.MsTemplateProjectApplication;
 import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
-import org.wscale.commons.test.AbstractRestIT;
+import org.wscale.commons.test.AbstractIT;
 
 
 /**
@@ -33,7 +33,7 @@ import org.wscale.commons.test.AbstractRestIT;
 // under test. In former versions of Spring Boot this was SpringApplicationConfiguration.
 @SpringBootTest(classes = MsTemplateProjectApplication.class)
 //@TestPropertySource(locations = { "classpath:/test.properties" })
-public class MountainControllerIT extends AbstractRestIT {
+public class MountainControllerIT extends AbstractIT {
 
     private static final String MOCK_NAME = "Mount Rushmore";
     private static final int MOCK_ALTITUDE = 8488;
@@ -43,7 +43,7 @@ public class MountainControllerIT extends AbstractRestIT {
 
 
 
-    // Because we have created a bean definition in our RestITConfig for the creation of that object we will now get
+    // Because we have created a bean definition in our ITConfig for the creation of that object we will now get
     // an mockito mock object autowired for our test instead of the original service which is wired to the database.
     @Autowired
     private MountainService mountainService;

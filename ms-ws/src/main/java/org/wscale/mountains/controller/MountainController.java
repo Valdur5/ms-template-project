@@ -80,7 +80,7 @@ public class MountainController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Mountain addMountain(final Mountain mountain) {
+	public Mountain addMountain(@RequestBody final Mountain mountain) {
 		// Convert the mountain DTO object into an mountain entry object.
 		MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
 		// Create add the creation date which is not present in the DTO.
@@ -123,11 +123,8 @@ public class MountainController {
 	public void updateMountain( @PathVariable final long mountainId, @RequestBody final Mountain mountain) {
 		// Get mountain from from the request and convert it to an mountain entity.
 		MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
-		// Set the mountain Id anyway even if it was delivered in the body,
-		// because the path variable should be more important.
-		mountainEntity.setMountainId(mountainId);
 		// Update the mountain in the mountain services.
-		this.mountainService.updateMountain(mountainEntity);
+		this.mountainService.updateMountain(mountainId, mountainEntity);
 	}
 
 	/**
@@ -142,12 +139,8 @@ public class MountainController {
 	public void patchMountain(@PathVariable final long mountainId, @RequestBody final Mountain mountain) {
 		// Get mountain from from the request and convert it to an mountain entity.
 		MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
-		// Get mountain from mountain service.
-		MountainEntity loadedMountain = this.mountainService.getMountain(mountainId);
-		// Merge the loaded mountain with the received mountain.
-		MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, mountainEntity);
 		// Update the mountain in the mountain services.
-		this.mountainService.updateMountain(mergedMountain);
+		this.mountainService.patchMountain(mountainId, mountainEntity);
 	}
 
 	/**
@@ -161,4 +154,5 @@ public class MountainController {
 		// Delete the mountain with the mountainId from the mountains services.
 		this.mountainService.deleteMountain(mountainId);
 	}
+
 }
