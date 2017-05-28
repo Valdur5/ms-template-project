@@ -14,7 +14,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import org.wscale.commons.exceptions.NotFoundRuntimeException;
+import org.wscale.commons.exceptions.errors.NotFoundRuntimeException;
 import org.wscale.mountains.MsTemplateProjectApplication;
 import org.wscale.mountains.domain.MountainEntity;
 import org.wscale.mountains.service.MountainService;
@@ -65,7 +65,7 @@ public class MountainControllerIT extends AbstractRestIT {
     }
 
     @Test(expected = NotFoundRuntimeException.class)
-    public void getMountain_givenIdNotExists_returns404() throws Exception {
+    public void getMountain_givenIdNotExists_returnsNotFoundRuntimeException() throws Exception {
         // Arrange, Act & Assert
         getMockMvc().perform(get("/mountains/-1"));
     }

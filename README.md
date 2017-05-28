@@ -10,8 +10,6 @@ It shall not contain too fancy example code and design / programming patterns. T
 
 ## Links
 
-* http://localhost:8080/jsondoc-ui.html for exploring the REST API enter in the search field: http://localhost:8080/jsondoc
-
 ## Project Structure
 
 The project structure is the following (find more information in the README files placed in the different folders and modules):
@@ -62,7 +60,6 @@ This prototype project is based on the following technologies:
 
 ### Documentation
 
-* JSONdoc - For creating a interactive documentation for the REST Api which can be used by developer who are interested in consuming our service. The quality should be very high and all error codes should be exposed so that other developers have all information to completely use and understand our service.
 * Javadoc - Used to document all classes, methods, interface ... HTML generation is not set up but the project is ready for it, if you decide that you want it.
 
 ### Quality

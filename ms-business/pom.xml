@@ -17,6 +17,11 @@
             <artifactId>ms-persistence</artifactId>
             <version>${global.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.wscale</groupId>
+            <artifactId>ms-commons</artifactId>
+            <version>${global.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
