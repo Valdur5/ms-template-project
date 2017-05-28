@@ -2,6 +2,8 @@ TODO - define maven goals to be used by CI tools
 TODO - Aspects
 TODO - What is with that RAML shit?
 TODO - Why are all test in the MS-WS module i dont like that.
+TODO - Change ${global.version} : http://maven.apache.org/maven-ci-friendly.html
+
 # ms-template-project
 
 This project is the base for the Archetype: TODO put in name

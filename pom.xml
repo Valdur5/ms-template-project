@@ -5,7 +5,7 @@
 
 	<groupId>org.wscale</groupId>
 	<artifactId>mountains</artifactId>
-	<version>${global.version}</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<modules>
 		<module>ms-commons</module>
 		<module>ms-persistence</module>
@@ -29,7 +29,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<global.version>0.0.1-SNAPSHOT</global.version>
 		<start-class>org.wscale.mountains.MsTemplateProjectApplication</start-class>
 		<jsondoc.version>1.2.17</jsondoc.version>
 	</properties>

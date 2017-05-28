@@ -5,7 +5,7 @@
     <parent>
         <artifactId>mountains</artifactId>
         <groupId>org.wscale</groupId>
-        <version>${global.version}</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,13 +15,13 @@
         <dependency>
             <groupId>org.wscale</groupId>
             <artifactId>ms-business</artifactId>
-            <version>${global.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
             <!-- TODO is it possible to exclude the peristence transient dependency -->
         </dependency>
         <dependency>
             <groupId>org.wscale</groupId>
             <artifactId>ms-commons</artifactId>
-            <version>${global.version}</version>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
