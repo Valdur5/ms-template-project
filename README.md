@@ -1,8 +1,6 @@
-TODO - define maven goals to be used by CI tools
-TODO - Aspects
+TODO - define maven goals for tests to be used by CI tools
+TODO - Aspects - logging
 TODO - What is with that RAML shit?
-TODO - Why are all test in the MS-WS module i dont like that.
-TODO - Change ${global.version} : http://maven.apache.org/maven-ci-friendly.html
 TODO - Split commons further.
 
 # ms-template-project

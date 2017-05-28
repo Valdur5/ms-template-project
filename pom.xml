@@ -5,7 +5,7 @@
 
 	<groupId>org.wscale</groupId>
 	<artifactId>mountains</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${revision}</version>
 	<modules>
 		<module>ms-commons</module>
 		<module>ms-persistence</module>
@@ -31,7 +31,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<start-class>org.wscale.mountains.MsTemplateProjectApplication</start-class>
-		<jsondoc.version>1.2.17</jsondoc.version>
+		<revision>1.0.0-SNAPSHOT</revision>
+		<raml-tester.version>0.9.1</raml-tester.version>
+		<dozer.version>5.4.0</dozer.version>
 	</properties>
 
 </project>

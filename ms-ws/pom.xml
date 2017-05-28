@@ -5,7 +5,7 @@
     <parent>
         <artifactId>mountains</artifactId>
         <groupId>org.wscale</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,18 +15,17 @@
         <dependency>
             <groupId>org.wscale</groupId>
             <artifactId>ms-business</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <!-- TODO is it possible to exclude the peristence transient dependency -->
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.wscale</groupId>
             <artifactId>ms-commons</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${revision}</version>
         </dependency>
         <dependency>
             <groupId>org.wscale</groupId>
             <artifactId>ms-commons-tests</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${revision}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -45,12 +44,12 @@
         <dependency>
             <groupId>guru.nidi.raml</groupId>
             <artifactId>raml-tester</artifactId>
-            <version>0.9.1</version>
+            <version>${raml-tester.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.dozer</groupId>
             <artifactId>dozer</artifactId>
-            <version>5.4.0</version>
+            <version>${dozer.version}</version>
         </dependency>
     </dependencies>
 
