@@ -1,5 +1,6 @@
 package org.wscale.mountains.merger;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.wscale.mountains.domain.MountainEntity;
 import org.junit.Test;
 
@@ -10,7 +11,8 @@ import static org.junit.Assert.*;
 
 public class MountainMergerTest {
 
-    private MountainMerger mountainMerger = new MountainMerger();
+    @Autowired
+    private MountainMerger mountainMerger;
 
     private static final long LOADED_MOUNTAINID = 1L;
     private static final long RECEIVED_MOUNTAINID = 2L;
