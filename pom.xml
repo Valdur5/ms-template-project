@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.wscale</groupId>
-	<artifactId>ms-template-project</artifactId>
+	<artifactId>mountains</artifactId>
 	<version>${global.version}</version>
 	<modules>
 		<module>ms-business</module>
@@ -15,7 +15,7 @@
     </modules>
 	<packaging>pom</packaging>
 
-	<name>ms-template-project</name>
+	<name>mountains</name>
 	<description>Template project for my Microservice Archetype</description>
 
 	<parent>
