@@ -5,11 +5,10 @@ import static org.mockito.Mockito.mock;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import org.wscale.mountains.repositories.MountainRepository;
 import org.wscale.mountains.service.MountainService;
 
 @Configuration
-public class ITConfig {
+public class WebserviceConfig {
 
     /**
      * This method replaces the MountainService Implementation from the business layer for our integration tests with
@@ -22,6 +21,4 @@ public class ITConfig {
         return mock(MountainService.class);
     }
 
-    @Bean
-    public MountainRepository mountainRepository() { return mock(MountainRepository.class); }
 }

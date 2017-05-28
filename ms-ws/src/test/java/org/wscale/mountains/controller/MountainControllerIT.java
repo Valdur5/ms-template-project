@@ -43,7 +43,7 @@ public class MountainControllerIT extends AbstractIT {
 
 
 
-    // Because we have created a bean definition in our ITConfig for the creation of that object we will now get
+    // Because we have created a bean definition in our WebserviceConfig for the creation of that object we will now get
     // an mockito mock object autowired for our test instead of the original service which is wired to the database.
     @Autowired
     private MountainService mountainService;
