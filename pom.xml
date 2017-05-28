@@ -7,11 +7,11 @@
 	<artifactId>mountains</artifactId>
 	<version>${global.version}</version>
 	<modules>
+		<module>ms-commons</module>
+		<module>ms-persistence</module>
 		<module>ms-business</module>
 		<module>ms-ws</module>
-		<module>ms-persistence</module>
 		<module>ms-tests</module>
-        <module>ms-commons</module>
     </modules>
 	<packaging>pom</packaging>
 
