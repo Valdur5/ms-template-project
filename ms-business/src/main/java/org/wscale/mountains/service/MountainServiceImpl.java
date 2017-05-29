@@ -1,11 +1,26 @@
 package org.wscale.mountains.service;
 
+/*
+ * Copyright 2017 Valentin Durst (www.wscale.org)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import org.wscale.commons.exceptions.ErrorObject;
 import org.wscale.commons.exceptions.errors.BadRequestRuntimeException;
 import org.wscale.commons.exceptions.errors.NotFoundRuntimeException;
@@ -31,7 +46,7 @@ public class MountainServiceImpl implements MountainService{
 
     @Override
     public MountainEntity getMountain(final long id) {
-        MountainEntity mountainEntity = this.mountainRepository.findOne(id);
+        final MountainEntity mountainEntity = this.mountainRepository.findOne(id);
         if (mountainEntity == null) {
             throw new NotFoundRuntimeException(
                     new ErrorObject("The mountain you have requested with the id "+id+" was not found.",
@@ -53,7 +68,7 @@ public class MountainServiceImpl implements MountainService{
     }
 
     @Override
-    public void updateMountain(long id, final MountainEntity mountainEntity) {
+    public void updateMountain(final long id, final MountainEntity mountainEntity) {
         // Make sure that there was no mountain id provided in the MountainEntity model.
         checkMountainIdForUpdate(mountainEntity.getMountainId());
         // Check if the mountain exists we are going to update.
@@ -64,21 +79,21 @@ public class MountainServiceImpl implements MountainService{
     }
 
     @Override
-    public void patchMountain(long id, MountainEntity mountainEntity) {
+    public void patchMountain(final long id, final MountainEntity mountainEntity) {
         // Make sure that there was no mountain id provided in the MountainEntity model.
         checkMountainIdForUpdate(mountainEntity.getMountainId());
         // Check if the mountain exists we are going to update.
         checkMountainExistsForUpdate(id);
         // Get mountain from mountain service.
-        MountainEntity loadedMountain = getMountain(id);
+        final MountainEntity loadedMountain = getMountain(id);
         // Merge the loaded mountain with the received mountain.
-        MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, mountainEntity);
+        final MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, mountainEntity);
         this.mountainRepository.save(mergedMountain);
     }
 
     @Override
     public void deleteMountain(final long id) {
-        MountainEntity loadedMountain = this.mountainRepository.findOne(id);
+        final MountainEntity loadedMountain = this.mountainRepository.findOne(id);
         if (loadedMountain == null) {
             throw new NotFoundRuntimeException(
                     new ErrorObject("The mountain you want to delete with the id "+id+" does not exist.",
@@ -87,7 +102,7 @@ public class MountainServiceImpl implements MountainService{
         this.mountainRepository.delete(id);
     }
 
-    private void checkMountainExistsForUpdate(long id) {
+    private void checkMountainExistsForUpdate(final long id) {
         if (this.mountainRepository.findOne(id) == null) {
             throw new NotFoundRuntimeException(new ErrorObject(
                     "The mountain you want to update does not exist.",
@@ -100,7 +115,7 @@ public class MountainServiceImpl implements MountainService{
      * don't want to have because the id is not changeable and can be different to the one in the url.
      * @param id - the id which is defined in the request body.
      */
-    private void checkMountainIdForUpdate(long id) {
+    private void checkMountainIdForUpdate(final long id) {
         if (id != 0) {
             throw new BadRequestRuntimeException(
                     new ErrorObject("You are not permitted to define the mountainId in the update " +

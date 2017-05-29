@@ -1,16 +1,34 @@
 package org.wscale.mountains.merger;
 
-import org.wscale.mountains.domain.MountainEntity;
-import org.junit.Test;
+/*
+ * Copyright 2017 Valentin Durst (www.wscale.org)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertThat;
 
 import java.time.LocalDate;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.*;
+import org.junit.Test;
+import org.wscale.mountains.domain.MountainEntity;
 
 public class MountainMergerTest {
 
-    private MountainMerger mountainMerger = new MountainMerger();
+    private final MountainMerger mountainMerger = new MountainMerger();
 
     private static final long LOADED_MOUNTAINID = 1L;
     private static final long RECEIVED_MOUNTAINID = 2L;
@@ -28,37 +46,37 @@ public class MountainMergerTest {
     @Test
     public void mergeMountains_bothMountainsNull_returnNull() throws Exception {
         // Arrange, Act & Assert
-        assertNull(mountainMerger.mergeMountains(null, null));
+        assertNull(this.mountainMerger.mergeMountains(null, null));
     }
 
     @Test
     public void mergeMountains_loadedMountainIsNull_returnReceivedMountain() throws Exception {
         // Arrange
-        MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,
+        final MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,
                 RECEIVED_ALTITUDE, RECEIVED_FIRSTASCENT, RECEIVED_FIRSTASCENDERS, RECEIVED_DATE);
         // Act & Assert
-        assertThat(mountainMerger.mergeMountains(null, receivedMountain), is(receivedMountain));
+        assertThat(this.mountainMerger.mergeMountains(null, receivedMountain), is(receivedMountain));
     }
 
     @Test
     public void mergeMountains_receivedMountainIsNull_returnLoadedMountain() throws Exception {
         // Arrange
-        MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
+        final MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
                 LOADED_ALTITUDE,LOADED_FIRSTASCENT, LOADED_FIRSTASCENDERS, LOADED_DATE);
         // Act & Assert
-        assertThat(mountainMerger.mergeMountains(loadedMountain, null), is(loadedMountain));
+        assertThat(this.mountainMerger.mergeMountains(loadedMountain, null), is(loadedMountain));
     }
 
     @Test
     public void mergeMountains_receivedMountainIsEmpty_returnAllValuesOfLoadedMountain() throws Exception {
         // Arrange
-        LocalDate now = LocalDate.now();
-        MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
+        final LocalDate now = LocalDate.now();
+        final MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
                 LOADED_ALTITUDE,LOADED_FIRSTASCENT, LOADED_FIRSTASCENDERS, LOADED_DATE);
-        MountainEntity receivedMountain = new MountainEntity("",0
+        final MountainEntity receivedMountain = new MountainEntity("",0
                 ,0, new String[]{}, null);
         // Act
-        MountainEntity mergedMountain = mountainMerger.mergeMountains(loadedMountain, receivedMountain);
+        final MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, receivedMountain);
         // Assert
         assertNotNull(mergedMountain);
         assertThat(mergedMountain.getName(), is(LOADED_NAME));
@@ -71,13 +89,13 @@ public class MountainMergerTest {
     @Test
     public void mergeMountains_receivedMountainIsCompletelySet_returnAllValuesOfReceivedMountain() throws Exception {
         // Arrange
-        LocalDate someDayAgo = LocalDate.ofYearDay(2001,1);
-        MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
+        final LocalDate someDayAgo = LocalDate.ofYearDay(2001,1);
+        final MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
                 LOADED_ALTITUDE,LOADED_FIRSTASCENT, LOADED_FIRSTASCENDERS, LOADED_DATE);
-        MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,
+        final MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,
                 RECEIVED_ALTITUDE, RECEIVED_FIRSTASCENT, RECEIVED_FIRSTASCENDERS, RECEIVED_DATE);
         // Act
-        MountainEntity mergedMountain = mountainMerger.mergeMountains(loadedMountain, receivedMountain);
+        final MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, receivedMountain);
         // Assert
         assertNotNull(mergedMountain);
         assertThat(mergedMountain.getName(), is(RECEIVED_NAME));
@@ -90,12 +108,12 @@ public class MountainMergerTest {
     @Test
     public void mergeMountains_receivedMountainIsPartiallySet_returnAMixOfValues_part1() throws Exception {
         // Arrange
-        MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
+        final MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
                 LOADED_ALTITUDE,LOADED_FIRSTASCENT, LOADED_FIRSTASCENDERS, LOADED_DATE);
-        MountainEntity receivedMountain = new MountainEntity("",RECEIVED_ALTITUDE
+        final MountainEntity receivedMountain = new MountainEntity("",RECEIVED_ALTITUDE
                 ,0, RECEIVED_FIRSTASCENDERS, null);
         // Act
-        MountainEntity mergedMountain = mountainMerger.mergeMountains(loadedMountain, receivedMountain);
+        final MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, receivedMountain);
         // Assert
         assertNotNull(mergedMountain);
         assertThat(mergedMountain.getName(), is(LOADED_NAME));
@@ -108,12 +126,12 @@ public class MountainMergerTest {
     @Test
     public void mergeMountains_receivedMountainIsPartiallySet_returnAMixOfValues_part2() throws Exception {
         // Arrange
-        MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
+        final MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
                 LOADED_ALTITUDE,LOADED_FIRSTASCENT, LOADED_FIRSTASCENDERS, LOADED_DATE);
-        MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,0
+        final MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,0
                 ,RECEIVED_FIRSTASCENT, null, RECEIVED_DATE);
         // Act
-        MountainEntity mergedMountain = mountainMerger.mergeMountains(loadedMountain, receivedMountain);
+        final MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, receivedMountain);
         // Assert
         assertNotNull(mergedMountain);
         assertThat(mergedMountain.getName(), is(RECEIVED_NAME));
@@ -126,14 +144,14 @@ public class MountainMergerTest {
     @Test
     public void mergeMountains_loadedMountainIdIsDifferentToReceivedMountainId_loadedIdGetsPriority() {
         // Arrange
-        MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
+        final MountainEntity loadedMountain = new MountainEntity(LOADED_NAME,
                 LOADED_ALTITUDE,LOADED_FIRSTASCENT, LOADED_FIRSTASCENDERS, LOADED_DATE);
-        MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,
+        final MountainEntity receivedMountain = new MountainEntity(RECEIVED_NAME,
                 RECEIVED_ALTITUDE, RECEIVED_FIRSTASCENT, RECEIVED_FIRSTASCENDERS, RECEIVED_DATE);
         loadedMountain.setMountainId(LOADED_MOUNTAINID);
         receivedMountain.setMountainId(RECEIVED_MOUNTAINID);
         // Act
-        MountainEntity mergedMountain = mountainMerger.mergeMountains(loadedMountain, receivedMountain);
+        final MountainEntity mergedMountain = this.mountainMerger.mergeMountains(loadedMountain, receivedMountain);
         // Assert
         assertNotNull(mergedMountain);
         assertThat(mergedMountain.getMountainId(), is(LOADED_MOUNTAINID));

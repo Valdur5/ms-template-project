@@ -1,5 +1,3 @@
-package org.wscale.commons.hateoas;
-
 /*
  * Copyright 2017 Valentin Durst (www.wscale.org)
  *
@@ -15,21 +13,3 @@ package org.wscale.commons.hateoas;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-
-import java.util.List;
-
-import org.springframework.hateoas.ResourceSupport;
-
-abstract class AbstractEnhancer<T extends ResourceSupport> {
-
-    T enhanceWithActions(final T obj, final List<HateoasAction> actions) {
-        for (final HateoasAction action : actions) {
-            for (final Object link : action.getLinks()) {
-                obj.add(linkTo(link).withRel(action.getType()));
-            }
-        }
-        return obj;
-    }
-}

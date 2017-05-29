@@ -1,5 +1,21 @@
 package org.wscale.mountains.dto;
 
+/*
+ * Copyright 2017 Valentin Durst (www.wscale.org)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 import org.springframework.hateoas.ResourceSupport;
 
 /**
@@ -17,49 +33,49 @@ public class Mountain extends ResourceSupport {
 
     }
 
-    public Mountain(long mountainId, String name, int altitude) {
+    public Mountain(final long mountainId, final String name, final int altitude) {
         this.mountainId = mountainId;
         this.name = name;
         this.altitude = altitude;
     }
 
     public long getMountainId() {
-        return mountainId;
+        return this.mountainId;
     }
 
-    public void setMountainId(long mountainId) {
+    public void setMountainId(final long mountainId) {
         this.mountainId = mountainId;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
     public int getAltitude() {
-        return altitude;
+        return this.altitude;
     }
 
-    public void setAltitude(int altitude) {
+    public void setAltitude(final int altitude) {
         this.altitude = altitude;
     }
 
     public int getFirstAscent() {
-        return firstAscent;
+        return this.firstAscent;
     }
 
-    public void setFirstAscent(int firstAscent) {
+    public void setFirstAscent(final int firstAscent) {
         this.firstAscent = firstAscent;
     }
 
     public String[] getFirstAscenders() {
-        return firstAscenders;
+        return this.firstAscenders;
     }
 
-    public void setFirstAscenders(String[] firstAscenders) {
+    public void setFirstAscenders(final String[] firstAscenders) {
         this.firstAscenders = firstAscenders;
     }
 }
