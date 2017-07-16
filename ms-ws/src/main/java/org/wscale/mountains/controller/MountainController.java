@@ -39,6 +39,9 @@ import org.wscale.mountains.mapper.MountainMapper;
 import org.wscale.mountains.merger.MountainMerger;
 import org.wscale.mountains.service.MountainService;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 /**
  * MountainController provides all the basic features to manage mountains.
  */
@@ -95,7 +98,7 @@ public class MountainController {
 	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
-	public Mountain addMountain(@RequestBody final Mountain mountain) {
+	public Mountain addMountain(@Valid @RequestBody final Mountain mountain) {
 		// Convert the mountain DTO object into an mountain entry object.
 		MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
 		// Create add the creation date which is not present in the DTO.
@@ -135,7 +138,7 @@ public class MountainController {
 	 */
 	@RequestMapping(value = "/{mountainId}", method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
-	public void updateMountain( @PathVariable final long mountainId, @RequestBody final Mountain mountain) {
+	public void updateMountain(@PathVariable final long mountainId, @Valid @RequestBody final Mountain mountain) {
 		// Get mountain from from the request and convert it to an mountain entity.
 		final MountainEntity mountainEntity = this.mountainMapper.mapDTOToEntity(mountain);
 		// Update the mountain in the mountain services.

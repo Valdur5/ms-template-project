@@ -18,13 +18,22 @@ package org.wscale.mountains.dto;
 
 import org.springframework.hateoas.ResourceSupport;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+
 /**
  * DTO for a mountain
  */
 public class Mountain extends ResourceSupport {
 
     private long mountainId;
+
+    @NotNull(message = "Name cannot be null")
     private String name;
+
+    @Min(value = 1, message = "The minimum must be higher than 0 meters.")
+    @Max(value = 8848, message = "The maximum can be the hight of Mt. Everest (8848 meters).")
     private int altitude;
     private int firstAscent;
     private String[] firstAscenders;
